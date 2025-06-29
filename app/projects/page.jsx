@@ -23,7 +23,7 @@ const works = [
         stack: [{ name: "Python" }, { name: "Flask" }], 
         image: '/assets/work/caesar-cipher.png',
         live: "https://demo-hkyx.onrender.com/caesar_cipher",
-        github: 'https://github.com/yourusername/caesar-cipher'
+        github: 'https://github.com/Gautham0925/Prodigi-CyberSecurity'
     },
     {
         num: '02',
@@ -33,7 +33,7 @@ const works = [
         stack: [{ name: "Python" }, { name: "Flask" }],
         image: '/assets/work/password-checker.png',
         live: "https://demo-hkyx.onrender.com/password_checker",
-        github: 'https://github.com/yourusername/password-strength-checker'
+        github: 'https://github.com/Gautham0925/Prodigi-CyberSecurity'
     },
     {
         num: '03',
@@ -43,7 +43,7 @@ const works = [
         stack: [{ name: "Python" }, { name: "Flask" }, { name: "Cryptography" }],
         image: '/assets/work/image-encryption.png',
         live: "https://demo-hkyx.onrender.com/image_encryption",
-        github: 'https://github.com/yourusername/image-encryption-tool'
+        github: 'https://github.com/Gautham0925/Prodigi-CyberSecurity'
     },
     {
         num: '04',
@@ -53,7 +53,7 @@ const works = [
         stack: [{ name: "Python" }],
         image: '/assets/work/keylogger.png',
         live: "https://demo-hkyx.onrender.com/keylogger",
-        github: 'https://github.com/yourusername/keylogger'
+        github: 'https://github.com/Gautham0925/Prodigi-CyberSecurity'
     },
     {
         num: '05',
@@ -63,7 +63,7 @@ const works = [
         stack: [{ name: "Python" }, { name: "Scapy" }],
         image: '/assets/work/packet-sniffer.png',
         live: "https://demo-hkyx.onrender.com/packet_sniffer",
-        github: 'https://github.com/yourusername/network-traffic-analyzer'
+        github: 'https://github.com/Gautham0925/Prodigi-CyberSecurity'
     }
 ]
 
