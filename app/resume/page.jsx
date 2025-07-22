@@ -40,7 +40,7 @@ const about = {
 const experience = {
     icon: "/public/assets/resume/icons/badge.svg",
     title: "My Experience",
-    description: "Internships and projects in cybersecurity, blockchain identity systems, and AI-powered pentesting tools.",
+    description: "Internships and projects in cybersecurity.",
     items: [
         {
             company: "Cyber Cell (Internship)",
@@ -81,7 +81,7 @@ const education = {
         },
         {
             institution: "B.E.M.H.S.S, Kasaragod",
-            degree: "+2",
+            degree: "sslc",
             duration: "2017-2020"
 
         },
