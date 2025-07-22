@@ -65,7 +65,7 @@ const experience = {
 const education = {
     icon: "/public/assets/resume/icons/cap.svg",
     title: "My Education",
-    description: "Currently pursuing my Master's degree in Computer Applications",
+    description: "Currently pursuing my Bachelor of Engineering degree in Computer Science(IoT,Cybersecurity including blockchain)",
     items: [
         {
             institution: "Alvas Institute of Engineering and Technology, Moodbidri",
