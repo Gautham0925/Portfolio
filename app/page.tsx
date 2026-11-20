@@ -8,7 +8,7 @@ export default function HomePage() {
     <PageContainer className="flex flex-col gap-4 pt-8 md:pt-12">
       <Hero />
       <Highlights />
-      <div className="mt-20">
+      <div className="mt-20 empty:hidden">
         <FeaturedProjects />
       </div>
     </PageContainer>

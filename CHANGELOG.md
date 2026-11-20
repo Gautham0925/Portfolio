@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased] — Phase 3: Content
+
+### Removed
+- All previous projects (Caesar Cipher, Password Strength Checker, Image Encryption, Keylogger, Packet Sniffer) and their screenshots, at owner's request.
+
+### Added
+- Projects page empty state; home featured-projects section hides when no projects exist.
+
 ## [Unreleased] — Phase 2: Design system & responsive UI
 
 ### Added

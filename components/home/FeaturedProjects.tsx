@@ -6,6 +6,7 @@ import { ProjectCard } from "@/components/projects/ProjectCard";
 import { projects } from "@/lib/content";
 
 export function FeaturedProjects() {
+  if (projects.length === 0) return null;
   return (
     <section aria-labelledby="featured-title" className="flex flex-col gap-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
