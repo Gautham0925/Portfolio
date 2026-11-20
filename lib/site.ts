@@ -25,5 +25,5 @@ export type SocialLink = {
 
 export const socialLinks: readonly SocialLink[] = [
   { label: "GitHub", href: "https://github.com/gautham0925", kind: "github" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/gautham-p-k-62aa68291/", kind: "linkedin" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/gauthampkini/", kind: "linkedin" },
 ];
