@@ -35,7 +35,7 @@ export function ContactForm() {
       });
       const result = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
       if (!response.ok || !result?.ok) {
-        setStatus({ kind: "error", message: result?.error ?? "Failed to send message. Please check your details or email directly." });
+        setStatus({ kind: "error", message: result?.error ?? `The server returned an unexpected response (${response.status}). Please email directly.` });
         return;
       }
       form.reset();

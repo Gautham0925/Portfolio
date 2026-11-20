@@ -13,8 +13,9 @@ export function getMailer() {
       port: 465,
       secure: true,
       auth: { user: process.env.ZOHO_USER, pass: process.env.ZOHO_PASS },
-      connectionTimeout: 10000,
-      socketTimeout: 15000,
+      connectionTimeout: 6000,
+      greetingTimeout: 6000,
+      socketTimeout: 8000,
     });
   }
   return cached;

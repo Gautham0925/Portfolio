@@ -1,10 +1,11 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 
 import { escapeHtml, getMailer, mailerConfigured, singleLine } from "@/lib/mailer";
 import { limited } from "@/lib/rateLimit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 30;
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -43,9 +44,9 @@ export async function POST(request: Request) {
   const owner = process.env.ZOHO_USER as string;
   const to = process.env.CONTACT_TO ?? owner;
   const name = `${firstname} ${lastname}`;
-  const mailer = getMailer();
 
   try {
+    const mailer = getMailer();
     await mailer.sendMail({
       from: `"Portfolio contact" <${owner}>`,
       to,
@@ -54,18 +55,23 @@ export async function POST(request: Request) {
       text: `${name} <${email}>${phone ? `\nPhone: ${phone}` : ""}\n\n${message}`,
       html: `<p><b>${escapeHtml(name)}</b> &lt;${escapeHtml(email)}&gt;${phone ? `<br>Phone: ${escapeHtml(phone)}` : ""}</p><p style="white-space:pre-wrap">${escapeHtml(message)}</p>`,
     });
-  } catch {
+  } catch (error) {
+    console.error("contact: owner mail failed", error instanceof Error ? `${error.name}: ${error.message}` : error);
     return fail(502, "Could not send your message. Please email directly.");
   }
 
-  try {
-    await mailer.sendMail({
-      from: `"Gautham P Kini" <${owner}>`,
-      to: email,
-      subject: "Thanks for reaching out",
-      text: `Hi ${firstname},\n\nThanks for your message. I have received it and will reply soon.\n\nGautham P Kini`,
-    });
-  } catch {}
+  after(async () => {
+    try {
+      await getMailer().sendMail({
+        from: `"Gautham P Kini" <${owner}>`,
+        to: email,
+        subject: "Thanks for reaching out",
+        text: `Hi ${firstname},\n\nThanks for your message. I have received it and will reply soon.\n\nGautham P Kini`,
+      });
+    } catch (error) {
+      console.error("contact: auto-reply failed", error instanceof Error ? error.message : error);
+    }
+  });
 
   return NextResponse.json({ ok: true });
 }
