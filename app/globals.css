@@ -1,32 +1,159 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
 
-@layer base {
-  body {
-    @apply leading-loose text-white font-primary bg-gradient-to-br from-black via-primary to-secondary;
-    background-attachment: fixed;
-  }
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-  .h1 {
-    @apply text-[48px] xl:text-[65px] leading-[1.1] font-semibold;
-  }
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b0d10;
+  --surface: #12151a;
+  --surface-2: #181c22;
+  --border: #242932;
+  --border-strong: #343a45;
+  --fg: #f4f6f8;
+  --muted: #a1aab8;
+  --subtle: #808a99;
+  --accent: #c5f82a;
+  --accent-hover: #d4fb5c;
+  --accent-fg: #0b0d10;
+  --accent-text: #c5f82a;
+  --accent-soft: rgb(197 248 42 / 0.1);
+  --info: #22d3ee;
+  --info-soft: rgb(34 211 238 / 0.1);
+  --danger: #f87171;
+  --success: #4ade80;
+  --grid-line: rgb(255 255 255 / 0.035);
+}
 
-  .h2 {
-    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
-  }
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #eef0f3;
+  --border: #dfe3e8;
+  --border-strong: #c7cdd5;
+  --fg: #0b0d10;
+  --muted: #4a5361;
+  --subtle: #5c6470;
+  --accent: #b4e81a;
+  --accent-hover: #a3d60f;
+  --accent-fg: #0b0d10;
+  --accent-text: #3f6212;
+  --accent-soft: rgb(132 204 22 / 0.14);
+  --info: #0e7490;
+  --info-soft: rgb(14 116 144 / 0.1);
+  --danger: #b91c1c;
+  --success: #15803d;
+  --grid-line: rgb(11 13 16 / 0.04);
+}
 
-  .h3 {
-    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+
+  --radius-card: 1.25rem;
+  --radius-control: 0.75rem;
+
+  --animate-rise: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 }
 
-@layer components {
-  .gradient-text {
-    @apply bg-gradient-to-r from-accent to-purple-400 bg-clip-text text-transparent;
+@utility container-page {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
   }
-  
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:scale-105;
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    min-height: 100dvh;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-balance tracking-tight;
+  }
+
+  p {
+    @apply text-pretty;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

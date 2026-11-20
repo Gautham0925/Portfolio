@@ -1,0 +1,35 @@
+{
+  "name": "Gautham P Kini",
+  "headline": "Cybersecurity Professional · VAPT",
+  "summary": "Cybersecurity professional focused on vulnerability assessment and penetration testing of web applications, APIs and authentication systems. I build realistic security training platforms and CTF infrastructure to practise and teach offensive and defensive security.",
+  "tagline": "Building safer systems through code and creativity.",
+  "photo": "/assets/photo.png",
+  "contact": {
+    "email": "gautham07049@gmail.com",
+    "location": "Karnataka, India"
+  },
+  "facts": [
+    {
+      "label": "Nationality",
+      "value": "Indian"
+    },
+    {
+      "label": "Languages",
+      "value": "English, Konkani, Kannada, Hindi, Malayalam, Tulu"
+    }
+  ],
+  "stats": [
+    {
+      "value": 3,
+      "label": "Security platforms built"
+    },
+    {
+      "value": 71,
+      "label": "Documented security test cases"
+    },
+    {
+      "value": 12,
+      "label": "Vulnerability labs designed"
+    }
+  ]
+}

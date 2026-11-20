@@ -1,0 +1,111 @@
+[
+  {
+    "slug": "vulncrm",
+    "title": "VulnCRM",
+    "category": "Security Training Platform",
+    "summary": "Enterprise-style multi-tenant CRM SaaS built as a realistic target for authorized web, API, authentication and authorization testing, with a secure configuration of the same code base for comparison.",
+    "updated": "2026-11",
+    "stack": ["FastAPI", "SQLAlchemy", "React", "TypeScript", "PostgreSQL", "GraphQL", "Node.js", "Docker"],
+    "github": "https://github.com/Gautham0925/vulncrm",
+    "highlights": [
+      { "value": "71", "label": "documented security test cases" },
+      { "value": "10", "label": "test categories incl. OAuth, OIDC, SAML" },
+      { "value": "36", "label": "database tables, Alembic migrations" }
+    ],
+    "caseStudy": {
+      "overview": "VulnCRM is a working CRM product — customers, leads, a sales pipeline, support tickets, documents, reports, teams, API and OAuth management, SSO and audit logs — used as an environment for authorized security testing. It is not a CTF: there are no flags, scores or challenge screens.",
+      "problem": "Practice targets tend to be isolated puzzles. VulnCRM places weaknesses inside real business workflows across multiple tenants, roles and identity flows, and ships a secure configuration of the same code so testers can compare vulnerable and expected behaviour and run regression tests.",
+      "architecture": [
+        { "component": "Edge", "technology": "Nginx", "role": "Single published entry point; backend, database and connector on internal networks" },
+        { "component": "Backend", "technology": "FastAPI, SQLAlchemy, Alembic", "role": "REST, GraphQL, OAuth server, SAML service provider, OIDC relying party" },
+        { "component": "Frontend", "technology": "React, TypeScript, Vite, Tailwind, TanStack Query", "role": "CRM user interface" },
+        { "component": "Synthetic IdP", "technology": "FastAPI, signxml", "role": "Signs SAML assertions and issues OIDC tokens for synthetic users" },
+        { "component": "Connector", "technology": "Node.js", "role": "Data-sync service with a Mongo-style query layer on an isolated network" },
+        { "component": "Database", "technology": "PostgreSQL 16 or SQLite", "role": "36 tables, seeded with synthetic data for four organizations" }
+      ],
+      "security": [
+        "A weakness activates only when SECURITY_MODE=vulnerable, the environment is a training type and TRAINING_ACK=true; individual weaknesses can be disabled.",
+        "Every request resolves a principal from a session cookie, bearer JWT, API key or OAuth token, then routes declare required permissions.",
+        "Data access goes through organization- and role-scoped query helpers.",
+        "Mutations write audit records with secrets redacted.",
+        "In Docker Compose only Nginx and the synthetic IdP are published, bound to 127.0.0.1."
+      ],
+      "testing": "Backend pytest suite runs against both configurations; Playwright end-to-end suites run separately against the vulnerable and secure builds; component tests for the frontend and connector.",
+      "challenges": [
+        "Rate limiting, the SAML assertion replay cache and webhook dispatch are process-local, so the backend must run as a single replica.",
+        "The vulnerable configuration must never be exposed to untrusted networks; all data is synthetic."
+      ]
+    }
+  },
+  {
+    "slug": "vulnmart",
+    "title": "VulnMart",
+    "category": "Vulnerable Web Application",
+    "summary": "Intentionally vulnerable e-commerce platform for authorized, local web application security training — one interconnected shop hosting 12 vulnerabilities in real business workflows.",
+    "updated": "2026-11",
+    "stack": ["React", "TypeScript", "Vite", "Tailwind", "FastAPI", "PostgreSQL", "Nginx", "Docker"],
+    "github": "https://github.com/Gautham0925/vulnmart",
+    "highlights": [
+      { "value": "12", "label": "security labs" },
+      { "value": "5", "label": "portals: storefront, customer, seller, admin, lab" },
+      { "value": "36", "label": "automated tests" }
+    ],
+    "caseStudy": {
+      "overview": "VulnMart is a full storefront with customer, seller and admin portals and a security-lab portal. Each exploited vulnerability reveals a static flag that is submitted on an external CTF platform.",
+      "problem": "Training needs vulnerabilities that sit inside realistic shopping, account and administration flows rather than standalone challenge pages, and an application that stays separate from scoring so it can plug into any CTF platform.",
+      "architecture": [
+        { "component": "Frontend", "technology": "React 18, TypeScript, Vite, Tailwind", "role": "Storefront and portals" },
+        { "component": "Backend", "technology": "FastAPI, SQLAlchemy, Pydantic", "role": "Shop, account and lab APIs" },
+        { "component": "Database", "technology": "PostgreSQL", "role": "Seeded shop data and accounts" },
+        { "component": "Edge", "technology": "Nginx, Docker Compose", "role": "Single local entry point" }
+      ],
+      "security": [
+        "Lab coverage: username enumeration, IDOR, broken session handling, privilege escalation, reflected, stored and DOM XSS, SQL injection, JWT key confusion and partial-MFA bypass.",
+        "The application does not validate flags, score or track completion; that contract belongs to the external CTF platform.",
+        "Seed credentials are documented as instructor material, not for participants."
+      ],
+      "testing": "36 automated tests.",
+      "challenges": [
+        "Designed for authorized, local use only; it must not be exposed outside a controlled network."
+      ]
+    }
+  },
+  {
+    "slug": "vulnmart-ctf-platform",
+    "title": "VulnMart CTF Platform",
+    "category": "CTF Infrastructure",
+    "summary": "Unified CTF platform combining FlagDesk — identity provider, SSO, flag authority and scoreboard — with VulnMart, sized and load-tested for 150 concurrent participants.",
+    "updated": "2026-11",
+    "stack": ["FastAPI", "PostgreSQL", "PgBouncer", "Redis", "Nginx", "Caddy", "Locust", "Docker"],
+    "github": "https://github.com/Gautham0925/ctf.vulnmart",
+    "related": [{ "label": "FlagDesk (standalone)", "href": "https://github.com/Gautham0925/flag.valmart" }],
+    "highlights": [
+      { "value": "150", "label": "concurrent participants, Locust-tested" },
+      { "value": "4", "label": "PostgreSQL schemas, least-privilege roles" },
+      { "value": "ES256", "label": "signed SSO assertions" }
+    ],
+    "caseStudy": {
+      "overview": "FlagDesk handles participant identity, single sign-on, per-participant flag issuance, scoring and the organizer dashboard. VulnMart runs the 12 labs and holds no participant identity or flag secret. Both share one PostgreSQL database behind PgBouncer.",
+      "problem": "A live event needs one identity across the CTF portal and the vulnerable shop, flags that cannot be shared between players, and a scoreboard that stays correct under simultaneous submissions — while the shop itself stays deliberately vulnerable.",
+      "architecture": [
+        { "component": "FlagDesk", "technology": "FastAPI", "role": "Identity provider, SSO, flag derivation and validation, scoring, organizer dashboard" },
+        { "component": "VulnMart", "technology": "FastAPI, React", "role": "Intentionally vulnerable shop with 12 labs" },
+        { "component": "Database", "technology": "PostgreSQL + PgBouncer", "role": "One database, four schemas, least-privilege roles, transaction pooling" },
+        { "component": "Cache", "technology": "Redis", "role": "One-time SSO codes and rate counters" },
+        { "component": "Edge", "technology": "Nginx, Caddy", "role": "Two virtual hosts, internal routes blocked, optional HTTPS" }
+      ],
+      "security": [
+        "Flags are HMAC-derived from participant, challenge, event and version, so a flag only scores for the player it was issued to.",
+        "SSO one-time codes expire in 60 seconds, are bound to client and redirect URI and are consumed atomically; assertions are ES256-signed and verified via JWKS.",
+        "The shop's deliberately weak inner JWT uses a different secret and audience from the outer session cookie, so lab flaws cannot forge platform identity — covered by tests.",
+        "Exactly two organizer accounts with TOTP, enforced by a database trigger and hidden from scoreboards and enumeration.",
+        "A unique constraint with atomic upsert prevents double scoring under concurrent submissions; CSRF header checks and rate limits on login and wrong flags."
+      ],
+      "testing": "Unit tests for FlagDesk and VulnMart, end-to-end tests over real processes, and a Locust load-test matrix with SQL correctness verification.",
+      "challenges": [
+        "The first 150-user load test exposed connection-pool exhaustion: a per-request mode lookup consumed an extra pooled connection, causing pool timeouts, p95 latency of 11–18 s and 2.8% errors. Fixed with a single-flight mode cache, larger pools and a thread limit below the pool size.",
+        "The DOM XSS lab cannot be verified server-side, so its flag is issued when the page is opened by a signed-in participant — documented as a known limitation."
+      ]
+    }
+  }
+]
