@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectCard } from "@/components/projects/ProjectCard";
-import { projects } from "@/lib/content";
+import { Badge } from "@/components/ui/Badge";
+import { Card } from "@/components/ui/Card";
+import { otherProjects, projects } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -28,6 +30,28 @@ export default function ProjectsPage() {
           ))}
         </ul>
       </div>
+      {otherProjects.length > 0 && (
+        <section aria-labelledby="more-projects" className="mt-20">
+          <SectionHeading eyebrow="Also built" title={<span id="more-projects">More projects</span>} />
+          <ul className="mt-8 grid gap-4 md:grid-cols-3">
+            {otherProjects.map((project) => (
+              <li key={project.title}>
+                <Card className="flex h-full flex-col gap-4">
+                  <h3 className="font-semibold leading-snug">{project.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted">{project.description}</p>
+                  <ul className="mt-auto flex flex-wrap gap-2" aria-label="Technology stack">
+                    {project.stack.map((tech) => (
+                      <li key={tech}>
+                        <Badge>{tech}</Badge>
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </PageContainer>
   );
 }

@@ -1,9 +1,14 @@
 [
   {
-    "institution": "Alvas Institute of Engineering and Technology, Moodbidri",
-    "qualification": "B.E. Computer Science (IoT, Cybersecurity including Blockchain)",
-    "period": "2022 – Present"
+    "institution": "Alva's Institute of Engineering and Technology, Moodbidri",
+    "qualification": "B.E. Computer Science (IoT, Cybersecurity & Blockchain)",
+    "period": "Nov 2022 – May 2026",
+    "grade": "CGPA 7.5/10"
   },
-  { "institution": "B.E.M.H.S.S, Kasaragod", "qualification": "Higher Secondary (+2)", "period": "2020 – 2022" },
-  { "institution": "B.E.M.H.S.S, Kasaragod", "qualification": "SSLC", "period": "2017 – 2020" }
+  {
+    "institution": "B.E.M. Higher Secondary School, Kasaragod, Kerala",
+    "qualification": "Pre-University (Class XII), Science",
+    "period": "Jun 2020 – May 2022",
+    "grade": "72%"
+  }
 ]

@@ -1,0 +1,28 @@
+[
+  {
+    "title": "OWASP LLM Top 10 Self-Hosted Labs",
+    "stack": [
+      "NVIDIA Nemotron 3",
+      "Self-hosted LLM"
+    ],
+    "description": "Simulated OWASP LLM Top 10 attacks on a self-hosted platform, integrating NVIDIA Nemotron 3 as the target model."
+  },
+  {
+    "title": "Blockchain-Based Authentication System",
+    "stack": [
+      "Ethereum",
+      "IPFS",
+      "MultiChain",
+      "Flask",
+      "React"
+    ],
+    "description": "Decentralized authentication system with MetaMask integration and IPFS-backed storage."
+  },
+  {
+    "title": "Intrusion Detection System with Wazuh",
+    "stack": [
+      "Wazuh"
+    ],
+    "description": "Simulated network attacks in a controlled lab and monitored intrusions using Wazuh."
+  }
+]

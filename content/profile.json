@@ -1,7 +1,7 @@
 {
   "name": "Gautham P Kini",
-  "headline": "Cybersecurity Professional · VAPT",
-  "summary": "Cybersecurity professional focused on vulnerability assessment and penetration testing of web applications, APIs and authentication systems. I build realistic security training platforms and CTF infrastructure to practise and teach offensive and defensive security.",
+  "headline": "Cybersecurity Professional · Web Application Security · VAPT",
+  "summary": "Web application security professional with hands-on penetration testing experience across authentication, session management, access control and injection flaws. Security Consultant at Ultraviolet Cyber India Pvt. Ltd.",
   "tagline": "Building safer systems through code and creativity.",
   "photo": "/assets/photo.png",
   "contact": {
@@ -10,12 +10,16 @@
   },
   "facts": [
     {
-      "label": "Nationality",
-      "value": "Indian"
+      "label": "Role",
+      "value": "Security Consultant, Ultraviolet Cyber India Pvt. Ltd."
+    },
+    {
+      "label": "Location",
+      "value": "Karnataka, India"
     },
     {
       "label": "Languages",
-      "value": "English, Konkani, Kannada, Hindi, Malayalam, Tulu"
+      "value": "English, Kannada, Malayalam, Tulu, Hindi, Konkani"
     }
   ],
   "stats": [

@@ -1,5 +1,63 @@
 [
-  { "group": "Programming Languages", "items": ["C", "Python", "JavaScript"] },
-  { "group": "Security & Networking Tools", "items": ["Nmap", "Wireshark", "Burp Suite", "VirtualBox / VM"] },
-  { "group": "Operating Systems", "items": ["Kali Linux", "Windows", "Android"] }
+  {
+    "group": "Web & API Security",
+    "items": [
+      "OWASP Top 10",
+      "OWASP API Top 10",
+      "Broken Access Control",
+      "IDOR",
+      "XSS",
+      "SQL Injection",
+      "XXE",
+      "SSRF",
+      "CORS Misconfiguration",
+      "File Upload Bypass",
+      "Business Logic Flaws"
+    ]
+  },
+  {
+    "group": "Identity & Auth",
+    "items": [
+      "JWT Attacks (Algorithm Confusion)",
+      "OAuth 2.0",
+      "SAML",
+      "Session Management",
+      "Authentication Bypass"
+    ]
+  },
+  {
+    "group": "AI & LLM Security",
+    "items": [
+      "OWASP Top 10 for LLM Applications",
+      "Direct & Indirect Prompt Injection",
+      "LLM Social Engineering",
+      "Jailbreaking"
+    ]
+  },
+  {
+    "group": "Tools",
+    "items": [
+      "Burp Suite",
+      "Nmap",
+      "Wireshark",
+      "Metasploit",
+      "Kali Linux"
+    ]
+  },
+  {
+    "group": "Scripting",
+    "items": [
+      "Python",
+      "Bash",
+      "C"
+    ]
+  },
+  {
+    "group": "Infrastructure",
+    "items": [
+      "Linux",
+      "Windows",
+      "Docker"
+    ]
+  }
 ]
