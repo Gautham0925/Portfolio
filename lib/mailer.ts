@@ -1,24 +1,38 @@
-import nodemailer, { type Transporter } from "nodemailer";
-
-let cached: Transporter | null = null;
+type Mail = {
+  to: string;
+  subject: string;
+  text: string;
+  html?: string;
+  replyTo?: string;
+};
 
 export function mailerConfigured() {
-  return Boolean(process.env.ZOHO_USER && process.env.ZOHO_PASS);
+  return Boolean(process.env.RESEND_API_KEY);
 }
 
-export function getMailer() {
-  if (!cached) {
-    cached = nodemailer.createTransport({
-      host: process.env.ZOHO_HOST ?? "smtp.zoho.in",
-      port: 465,
-      secure: true,
-      auth: { user: process.env.ZOHO_USER, pass: process.env.ZOHO_PASS },
-      connectionTimeout: 6000,
-      greetingTimeout: 6000,
-      socketTimeout: 8000,
-    });
+export function mailFrom(label: string) {
+  const address = process.env.MAIL_FROM_ADDRESS ?? "gautham@secworks.dpdns.org";
+  return `${label} <${address}>`;
+}
+
+export async function sendMail(from: string, mail: Mail) {
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from,
+      to: [mail.to],
+      subject: mail.subject,
+      text: mail.text,
+      html: mail.html,
+      reply_to: mail.replyTo,
+    }),
+    signal: AbortSignal.timeout(10000),
+  });
+  if (!response.ok) {
+    const detail = await response.text().catch(() => "");
+    throw new Error(`Mail API ${response.status}: ${detail.slice(0, 300)}`);
   }
-  return cached;
 }
 
 export const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (char) => `&#${char.charCodeAt(0)};`);

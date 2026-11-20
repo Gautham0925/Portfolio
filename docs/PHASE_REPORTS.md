@@ -38,8 +38,7 @@ Measured on a local production build with headless Chrome and software WebGL (Sw
 
 ## Remaining
 
-- Contact form needs `ZOHO_USER` and `ZOHO_PASS` set on the host. Without them the API returns a clear 503 message.
-- Zoho Free plan may not allow SMTP. If login fails, use a paid plan or Resend.
+- Contact form needs `RESEND_API_KEY` and a verified sending domain in Resend. Without the key the API returns a clear 503 message.
 - No research section exists in the content files, so none was added.
 - The architecture diagram shows components only. Data-flow arrows need relationship data in `content/projects.json`.
 - Not yet checked on a physical phone or a real GPU.
