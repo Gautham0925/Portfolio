@@ -12,7 +12,7 @@ Personal portfolio of Gautham P Kini, built with Next.js (App Router) and TypeSc
 | UI | React 19, Tailwind CSS 4, Radix UI primitives |
 | Language | TypeScript (strict) |
 | Motion and 3D | Framer Motion, React Three Fiber, three.js |
-| Mail | Resend HTTPS API (Zoho receives) |
+| Mail | Zoho Mail API over HTTPS |
 
 ## Getting started
 
@@ -27,7 +27,7 @@ Open http://localhost:3000.
 
 ## Environment
 
-Copy `.env.example` to `.env.local` and set `RESEND_API_KEY`. Set the same variables on the host. Outbound SMTP is blocked on Render free instances, so mail is sent over HTTPS. Never commit real values.
+Copy `.env.example` to `.env.local` and run `node scripts/zoho-setup.mjs` once to obtain the Zoho values, then set them on the host. Outbound SMTP is blocked on Render free instances, so mail is sent through the Zoho Mail API over HTTPS. Never commit real values.
 
 ## Scripts
 

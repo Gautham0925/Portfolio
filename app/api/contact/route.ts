@@ -1,6 +1,6 @@
 import { after, NextResponse } from "next/server";
 
-import { escapeHtml, mailFrom, mailerConfigured, sendMail, singleLine } from "@/lib/mailer";
+import { escapeHtml, mailerConfigured, sendMail, singleLine } from "@/lib/mailer";
 import { limited } from "@/lib/rateLimit";
 
 export const runtime = "nodejs";
@@ -45,12 +45,10 @@ export async function POST(request: Request) {
   const name = `${firstname} ${lastname}`;
 
   try {
-    await sendMail(mailFrom("Portfolio contact"), {
+    await sendMail({
       to,
-      replyTo: email,
       subject: `Portfolio contact: ${name}`,
-      text: `${name} <${email}>${phone ? `\nPhone: ${phone}` : ""}\n\n${message}`,
-      html: `<p><b>${escapeHtml(name)}</b> &lt;${escapeHtml(email)}&gt;${phone ? `<br>Phone: ${escapeHtml(phone)}` : ""}</p><p style="white-space:pre-wrap">${escapeHtml(message)}</p>`,
+      html: `<p><b>${escapeHtml(name)}</b><br>Reply to: <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a>${phone ? `<br>Phone: ${escapeHtml(phone)}` : ""}</p><p style="white-space:pre-wrap">${escapeHtml(message)}</p>`,
     });
   } catch (error) {
     console.error("contact: owner mail failed", error instanceof Error ? error.message : error);
@@ -59,10 +57,10 @@ export async function POST(request: Request) {
 
   after(async () => {
     try {
-      await sendMail(mailFrom("Gautham P Kini"), {
+      await sendMail({
         to: email,
         subject: "Thanks for reaching out",
-        text: `Hi ${firstname},\n\nThanks for your message. I have received it and will reply soon.\n\nGautham P Kini`,
+        html: `<p>Hi ${escapeHtml(firstname)},</p><p>Thanks for your message. I have received it and will reply soon.</p><p>Gautham P Kini</p>`,
       });
     } catch (error) {
       console.error("contact: auto-reply failed", error instanceof Error ? error.message : error);

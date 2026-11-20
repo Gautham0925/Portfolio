@@ -38,7 +38,7 @@ Measured on a local production build with headless Chrome and software WebGL (Sw
 
 ## Remaining
 
-- Contact form needs `RESEND_API_KEY` and a verified sending domain in Resend. Without the key the API returns a clear 503 message.
+- Contact form needs the Zoho Mail API values from `scripts/zoho-setup.mjs`. Without them the API returns a clear 503 message. The Zoho Mail API has no reply-to field, so the owner email carries a reply link to the visitor.
 - No research section exists in the content files, so none was added.
 - The architecture diagram shows components only. Data-flow arrows need relationship data in `content/projects.json`.
 - Not yet checked on a physical phone or a real GPU.
