@@ -4,6 +4,8 @@ import educationData from "@/content/education.json";
 import skillsData from "@/content/skills.json";
 import certificationsData from "@/content/certifications.json";
 import projectsData from "@/content/projects.json";
+import achievementsData from "@/content/achievements.json";
+import otherProjectsData from "@/content/other-projects.json";
 
 export type Profile = {
   name: string;
@@ -16,8 +18,10 @@ export type Profile = {
   stats: { value: number; label: string }[];
 };
 
-export type Experience = { organization: string; role: string; period: string };
-export type Education = { institution: string; qualification: string; period: string };
+export type Experience = { organization: string; role: string; period: string; highlights?: string[] };
+export type Education = { institution: string; qualification: string; period: string; grade?: string };
+export type Achievement = { title: string; context: string };
+export type OtherProject = { title: string; stack: string[]; description: string };
 export type SkillGroup = { group: string; items: string[] };
 export type Certification = { issuer: string; name: string; year: string; image: string };
 export type ArchitectureItem = { component: string; technology: string; role: string };
@@ -52,6 +56,8 @@ export const education: readonly Education[] = educationData;
 export const skills: readonly SkillGroup[] = skillsData;
 export const certifications: readonly Certification[] = certificationsData;
 export const projects: readonly Project[] = projectsData;
+export const achievements: readonly Achievement[] = achievementsData;
+export const otherProjects: readonly OtherProject[] = otherProjectsData;
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);

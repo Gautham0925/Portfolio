@@ -31,8 +31,9 @@ export function ContactForm() {
     setStatus({ kind: "sending" });
     try {
       const response = await fetch(SCRIPT_URL, { method: "POST", body: new FormData(form) });
-      if (!response.ok) {
-        setStatus({ kind: "error", message: "Failed to send message. Please try again or email directly." });
+      const result = await response.json().catch(() => null);
+      if (!response.ok || result?.result === "error") {
+        setStatus({ kind: "error", message: "Failed to send message. Please check your details or email directly." });
         return;
       }
       form.reset();
@@ -43,7 +44,7 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-5" aria-describedby="form-status">
+    <form onSubmit={handleSubmit} className="relative flex flex-col gap-5" aria-describedby="form-status">
       <div className="grid gap-5 sm:grid-cols-2">
         <Field id="firstname" label="First name">
           <Input id="firstname" name="firstname" autoComplete="given-name" maxLength={80} required />
@@ -58,6 +59,10 @@ export function ContactForm() {
           <Input id="phone" type="tel" name="phone" autoComplete="tel" maxLength={20} />
         </Field>
       </div>
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label htmlFor="company">Company</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <Field id="message" label="Message">
         <Textarea id="message" name="Message" maxLength={2000} required />
       </Field>
@@ -71,7 +76,7 @@ export function ContactForm() {
           aria-live="polite"
           className={status.kind === "error" ? "text-sm text-danger" : "text-sm text-success"}
         >
-          {status.kind === "success" && "Message sent — thank you!"}
+          {status.kind === "success" && "Thank you for contacting me — a confirmation email is on its way."}
           {status.kind === "error" && status.message}
         </p>
       </div>

@@ -1,5 +1,18 @@
 # Changelog
 
+## [Unreleased] — Content refresh from 2026 CV
+
+### Changed
+- Replaced CV PDF with the 2026 version.
+- Headline, summary, experience (Security Consultant, Ultraviolet Cyber, Jan 2026 – Present), education (with dates and grades), skills and languages updated from the CV.
+- Home "Focus areas" shows Web & API, Identity & Auth, and AI & LLM security.
+
+### Added
+- Achievements tab (NCSRC hackathon, conferences, PortSwigger, HTB/THM, AI security community).
+- "More projects" section: OWASP LLM Top 10 labs, blockchain authentication, Wazuh IDS.
+- Contact auto-reply: `integrations/contact-form/Code.gs` (Google Apps Script) sends visitors a confirmation email and notifies the owner, with honeypot, per-sender cooldown, daily cap and formula-injection protection.
+- Contact form honeypot field; success message mentions the confirmation email; server-side errors surfaced.
+
 ## [Unreleased] — Phase 3: Content
 
 ### Removed

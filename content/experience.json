@@ -1,22 +1,17 @@
 [
   {
     "organization": "Ultraviolet Cyber India Pvt. Ltd.",
+    "role": "Security Consultant",
+    "period": "Jan 2026 – Present",
+    "highlights": [
+      "Performed web application penetration tests, identifying and validating vulnerabilities in authentication and session management workflows.",
+      "Reported high and critical findings across XSS, IDOR and broken access control, with reproduction steps and remediation guidance.",
+      "Assessed applications for common and business-logic vulnerabilities, contributing to client-facing security reports."
+    ]
+  },
+  {
+    "organization": "Ultraviolet Cyber India Pvt. Ltd.",
     "role": "VAPT Intern",
     "period": "6-month internship"
-  },
-  {
-    "organization": "Cyber Cell (Internship)",
-    "role": "Cybersecurity Intern",
-    "period": "May 2025 – Present"
-  },
-  {
-    "organization": "Prodigy Info Tech",
-    "role": "Python Developer Intern",
-    "period": "Jan 2025 – Mar 2025"
-  },
-  {
-    "organization": "Blockchain & DID Research Project",
-    "role": "Researcher & Developer",
-    "period": "Feb 2025 – Present"
   }
 ]

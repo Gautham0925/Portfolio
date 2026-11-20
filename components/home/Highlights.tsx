@@ -27,16 +27,21 @@ export function Highlights() {
         </Card>
       )}
       <Card className="flex flex-col gap-4 lg:col-span-4">
-        <p className="eyebrow">Toolkit</p>
-        <ul className="flex flex-wrap gap-2">
-          {skills.flatMap((group) =>
-            group.items.map((item) => (
-              <li key={`${group.group}-${item}`}>
-                <Badge size="md">{item}</Badge>
-              </li>
-            )),
-          )}
-        </ul>
+        <p className="eyebrow">Focus areas</p>
+        <div className="grid gap-5 md:grid-cols-3">
+          {skills.slice(0, 3).map((group) => (
+            <div key={group.group} className="flex flex-col gap-3">
+              <p className="text-sm font-medium">{group.group}</p>
+              <ul className="flex flex-wrap gap-2">
+                {group.items.slice(0, 6).map((item) => (
+                  <li key={item}>
+                    <Badge>{item}</Badge>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </Card>
     </section>
   );
