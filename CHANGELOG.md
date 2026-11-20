@@ -6,7 +6,9 @@
 - All previous projects (Caesar Cipher, Password Strength Checker, Image Encryption, Keylogger, Packet Sniffer) and their screenshots, at owner's request.
 
 ### Added
-- Projects page empty state; home featured-projects section hides when no projects exist.
+- Project case studies for VulnCRM, VulnMart and the VulnMart CTF Platform, written only from each repository's own README and docs.
+- `/projects/[slug]` statically generated case-study pages: overview, problem, architecture, stack, security design, testing, challenges.
+- Project cards without screenshots use a typographic header with the project's key figure.
 
 ## [Unreleased] — Phase 2: Design system & responsive UI
 
