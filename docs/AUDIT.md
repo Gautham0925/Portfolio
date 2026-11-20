@@ -63,7 +63,7 @@ Audit date: 2026-11-20 · Baseline commit: `4edf139`
 - Hero says "final-year B.E. student"; about says "Fresher".
 - Experience list does not include the 6-month VAPT internship at Ultraviolet Cyber India Pvt. Ltd. or current employment.
 - Projects list only Prodigy internship tools; newer projects (VulnCRM, VulnMarket, VulnAI, Burp extensions) absent.
-- LinkedIn URL differs between site (`gautham-p-k-62aa68291`) and other profiles (`gauthampkini`).
+- LinkedIn URL differed between site (`gautham-p-k-62aa68291`) and other profiles; owner confirmed `gauthampkini` (fixed).
 
 ## Baseline checks
 
