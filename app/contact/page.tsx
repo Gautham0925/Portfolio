@@ -1,114 +1,63 @@
-"use client";
+import type { Metadata } from "next";
+import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 
-import { useState, type FormEvent, type ReactNode } from "react";
-import { motion } from "framer-motion";
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { PageContainer } from "@/components/layout/PageContainer";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Card } from "@/components/ui/Card";
+import { ContactForm } from "@/components/contact/ContactForm";
+import { SocialLinks } from "@/components/layout/SocialLinks";
+import { profile } from "@/lib/content";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-
-type ContactInfo = {
-  icon: ReactNode;
-  title: string;
-  description: string;
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Gautham P Kini.",
 };
 
-const info: readonly ContactInfo[] = [
-  { icon: <FaPhoneAlt aria-hidden="true" />, title: "Phone", description: "+91 6282259552" },
-  { icon: <FaEnvelope aria-hidden="true" />, title: "Email", description: "gautham07049@gmail.com" },
-  { icon: <FaMapMarkerAlt aria-hidden="true" />, title: "Address", description: "Moodbidri, Dakshina Kannada 574227" },
+const details = [
+  { icon: FiMail, label: "Email", value: profile.contact.email, href: `mailto:${profile.contact.email}` },
+  { icon: FiPhone, label: "Phone", value: profile.contact.phone, href: `tel:${profile.contact.phone.replace(/\s/g, "")}` },
+  { icon: FiMapPin, label: "Location", value: profile.contact.location },
 ];
 
-const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbz9jMg3-sCsYEqvfyphaUdzQEEtZZaop1gN4Xt_0K73l9dUUchnIqxyKWCwpbWJW5fORQ/exec";
-
-type Status = { kind: "idle" } | { kind: "sending" } | { kind: "success" } | { kind: "error"; message: string };
-
-const Contact = () => {
-  const [status, setStatus] = useState<Status>({ kind: "idle" });
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    setStatus({ kind: "sending" });
-
-    try {
-      const response = await fetch(SCRIPT_URL, { method: "POST", body: new FormData(form) });
-      if (!response.ok) {
-        setStatus({ kind: "error", message: "Failed to send message." });
-        return;
-      }
-      form.reset();
-      setStatus({ kind: "success" });
-      setTimeout(() => setStatus({ kind: "idle" }), 3000);
-    } catch {
-      setStatus({ kind: "error", message: "Error sending message." });
-    }
-  };
-
+export default function ContactPage() {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 2.4, duration: 0.4, ease: "easeIn" } }}
-      className="py-6"
-    >
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row gap-[30px]">
-          <div className="xl:w-[54%] order-2 xl:order-none">
-            <form
-              className="flex flex-col gap-6 p-16 bg-[#27272c] rounded-xl"
-              name="submit-to-google-sheet"
-              onSubmit={handleSubmit}
-              aria-describedby="form-status"
-            >
-              <h1 className="text-4xl text-accent">Contact me</h1>
-              <p className="text-white/60">Fill up the following details to contact me</p>
-
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                <Input type="text" name="firstname" placeholder="Name" aria-label="First name" autoComplete="given-name" maxLength={80} required />
-                <Input type="text" name="lastname" placeholder="Lastname" aria-label="Last name" autoComplete="family-name" maxLength={80} required />
-                <Input type="email" name="email" placeholder="Email address" aria-label="Email address" autoComplete="email" maxLength={254} required />
-                <Input type="tel" name="phone" placeholder="Phone Number" aria-label="Phone number" autoComplete="tel" maxLength={20} required />
+    <PageContainer>
+      <SectionHeading
+        as="h1"
+        eyebrow="Contact"
+        title="Let's talk"
+        description="Questions about my work, a security project or an opportunity — send a message."
+      />
+      <div className="mt-12 grid gap-4 lg:grid-cols-[1.6fr_1fr]">
+        <Card className="p-6 md:p-8">
+          <h2 className="sr-only">Contact form</h2>
+          <ContactForm />
+        </Card>
+        <div className="flex flex-col gap-4">
+          <h2 className="sr-only">Contact details</h2>
+          {details.map(({ icon: Icon, label, value, href }) => (
+            <Card key={label} className="flex items-center gap-4">
+              <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent-text">
+                <Icon aria-hidden="true" className="size-5" />
+              </span>
+              <div className="min-w-0">
+                <p className="font-mono text-xs uppercase tracking-wider text-subtle">{label}</p>
+                {href ? (
+                  <a href={href} className="break-words hover:text-accent-text">
+                    {value}
+                  </a>
+                ) : (
+                  <p className="break-words">{value}</p>
+                )}
               </div>
-
-              <Textarea className="h-[200px]" name="Message" placeholder="Type your message here." aria-label="Message" maxLength={2000} required />
-
-              <Button size="md" className="max-w-40" type="submit" disabled={status.kind === "sending"}>
-                {status.kind === "sending" ? "Sending…" : "Send message"}
-              </Button>
-            </form>
-
-            <p
-              id="form-status"
-              role="status"
-              aria-live="polite"
-              className={`mt-4 ${status.kind === "error" ? "text-red-400" : "text-green-500"}`}
-            >
-              {status.kind === "success" && "Message sent successfully!"}
-              {status.kind === "error" && status.message}
-            </p>
-          </div>
-
-          <div className="flex items-center flex-1 order-1 mb-8 xl:justify-end xl:order-none xl:mb-0">
-            <ul className="flex flex-col gap-10">
-              {info.map((item) => (
-                <li key={item.title} className="flex items-center gap-6">
-                  <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-xl flex items-center justify-center">
-                    <div className="text-[28px]">{item.icon}</div>
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white/60">{item.title}</p>
-                    <p className="text-xl">{item.description}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
+            </Card>
+          ))}
+          <Card className="flex items-center justify-between gap-4">
+            <p className="font-mono text-xs uppercase tracking-wider text-subtle">Elsewhere</p>
+            <SocialLinks />
+          </Card>
         </div>
       </div>
-    </motion.section>
+    </PageContainer>
   );
-};
-
-export default Contact;
+}

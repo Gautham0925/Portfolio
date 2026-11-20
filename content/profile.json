@@ -1,0 +1,22 @@
+{
+  "name": "Gautham P Kini",
+  "headline": "Bachelor of Engineering Student",
+  "summary": "I'm a final-year B.E. student and a cybersecurity and networking enthusiast, passionate about building secure systems and exploring real-world network challenges.",
+  "tagline": "Building safer systems through code and creativity.",
+  "photo": "/assets/photo.png",
+  "contact": {
+    "email": "gautham07049@gmail.com",
+    "phone": "+91 6282259552",
+    "location": "Moodbidri, Dakshina Kannada 574227"
+  },
+  "facts": [
+    { "label": "Experience", "value": "Fresher" },
+    { "label": "Nationality", "value": "Indian" },
+    { "label": "Languages", "value": "English, Konkani, Kannada, Hindi, Malayalam, Tulu" }
+  ],
+  "stats": [
+    { "value": 3, "label": "Programming languages" },
+    { "value": 4, "label": "Security & networking tools" },
+    { "value": 3, "label": "Operating systems explored" }
+  ]
+}

@@ -1,0 +1,5 @@
+[
+  { "group": "Programming Languages", "items": ["C", "Python", "JavaScript"] },
+  { "group": "Security & Networking Tools", "items": ["Nmap", "Wireshark", "Burp Suite", "VirtualBox / VM"] },
+  { "group": "Operating Systems", "items": ["Kali Linux", "Windows", "Android"] }
+]

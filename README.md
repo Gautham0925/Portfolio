@@ -2,16 +2,15 @@
 
 Personal portfolio of Gautham P Kini, built with Next.js (App Router) and TypeScript.
 
-> Modernization in progress — see [CHANGELOG.md](CHANGELOG.md) and [docs/AUDIT.md](docs/AUDIT.md).
+> Modernization in progress — see [CHANGELOG.md](CHANGELOG.md), [DESIGN_SYSTEM.md](DESIGN_SYSTEM.md) and [docs/AUDIT.md](docs/AUDIT.md).
 
 ## Stack
 
 | Layer | Technology |
 |---|---|
 | Framework | Next.js 16 (App Router, Turbopack) |
-| UI | React 19, Tailwind CSS 3, Radix UI primitives |
+| UI | React 19, Tailwind CSS 4, Radix UI primitives |
 | Language | TypeScript (strict) |
-| Animation | framer-motion, swiper |
 
 ## Getting started
 
@@ -38,14 +37,15 @@ Open http://localhost:3000.
 ## Project structure
 
 ```
-app/            Routes (home, resume, projects, contact) and self-hosted fonts
-components/     Layout and shared components
-components/ui/  Typed UI primitives
-lib/            Utilities
+app/            Routes and self-hosted fonts
+components/     layout/, home/, projects/, resume/, contact/, ui/
+content/        Portfolio content as JSON
+hooks/          Client hooks (theme)
+lib/            Content loaders, site config, utilities
 public/assets/  Images, certificates, resume PDF
 docs/           Audit and project documentation
 ```
 
 ## Fonts
 
-JetBrains Mono is bundled locally under the SIL Open Font License 1.1 (`app/fonts/JetBrainsMono-OFL.txt`).
+Inter and JetBrains Mono are bundled locally under the SIL Open Font License 1.1 (`app/fonts/*-OFL.txt`).

@@ -1,5 +1,24 @@
 # Changelog
 
+## [Unreleased] — Phase 2: Design system & responsive UI
+
+### Added
+- Design tokens (dark default + light) as CSS variables mapped through Tailwind 4 `@theme`; documented in `DESIGN_SYSTEM.md`.
+- Self-hosted Inter (UI) alongside JetBrains Mono (metadata).
+- Theme toggle with pre-paint script (no flash) and `localStorage` persistence.
+- Components: `Card`, `Badge`, `SectionHeading`, `Navbar`, `NavLinks`, `MobileNav`, `Footer`, `PageContainer`, `SocialLinks`, `ThemeToggle`, `ProjectCard`, `ResumeTabs`, `ContactForm`.
+- Content moved to typed JSON in `content/` (no wording changes) with loaders in `lib/content.ts`.
+- Custom 404 page, skip-to-content link, visible focus rings, `prefers-reduced-motion` support.
+
+### Changed
+- Tailwind CSS 3 → 4 (`@tailwindcss/postcss`, CSS-first config); `tailwindcss-animate` → `tw-animate-css`.
+- Home rebuilt as a bento grid; projects as a card grid; resume as tabbed timeline and certificate grid; contact form with visible labels.
+- Pages are server components; only the theme toggle, nav, tabs and contact form ship client JS.
+
+### Removed
+- Stair and page transitions and 2–2.4 s content delays.
+- `framer-motion`, `swiper`, `react-countup`, `@radix-ui/react-scroll-area`, `@radix-ui/react-tooltip`, `autoprefixer`.
+
 ## [Unreleased] — Phase 1: Framework modernization & TypeScript
 
 ### Security

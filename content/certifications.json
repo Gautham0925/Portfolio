@@ -1,0 +1,16 @@
+[
+  { "issuer": "NPTEL", "name": "Introduction to Internet of Things", "year": "2024", "image": "/assets/certificates/NPTEL/iot.png" },
+  { "issuer": "NPTEL", "name": "Programming in Java", "year": "2024", "image": "/assets/certificates/NPTEL/java.png" },
+  { "issuer": "Coursera", "name": "Google Cybersecurity", "year": "2024", "image": "/assets/certificates/Coursera/google-cybersecurity.png" },
+  { "issuer": "Cisco", "name": "Introduction to Cybersecurity", "year": "2024", "image": "/assets/certificates/cisco/cisco-introcyber.png" },
+  { "issuer": "Cisco", "name": "Ethical Hacker", "year": "2024", "image": "/assets/certificates/cisco/Ethicalhacker.png" },
+  { "issuer": "Cisco", "name": "Introduction to IoT and Digital Transformation", "year": "2024", "image": "/assets/certificates/cisco/IoT.png" },
+  { "issuer": "Cisco", "name": "Linux Unhatched", "year": "2024", "image": "/assets/certificates/cisco/linux.png" },
+  { "issuer": "Cisco", "name": "Networking Basics", "year": "2024", "image": "/assets/certificates/cisco/networking.png" },
+  { "issuer": "Cybrary", "name": "DevSecOps", "year": "2025", "image": "/assets/certificates/Cybrary/1.png" },
+  { "issuer": "Cybrary", "name": "Network Basics", "year": "2025", "image": "/assets/certificates/Cybrary/2.png" },
+  { "issuer": "Cybrary", "name": "IP Addressing Basics", "year": "2025", "image": "/assets/certificates/Cybrary/3.png" },
+  { "issuer": "Cybrary", "name": "Network Reference Models", "year": "2025", "image": "/assets/certificates/Cybrary/4.png" },
+  { "issuer": "Forage", "name": "Cybersecurity Job Simulation", "year": "2024", "image": "/assets/certificates/Forage/Mastercard.png" },
+  { "issuer": "Forage", "name": "Cybersecurity Analyst Job Simulation", "year": "2025", "image": "/assets/certificates/Forage/TATA.png" }
+]
