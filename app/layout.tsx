@@ -6,6 +6,9 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeScript } from "@/components/providers/ThemeProvider";
+import { MotionProvider } from "@/components/providers/MotionProvider";
+import { StairTransition } from "@/components/motion/StairTransition";
+import { ChatLauncher } from "@/components/chat/ChatLauncher";
 import { site } from "@/lib/site";
 
 const inter = localFont({
@@ -47,11 +50,15 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <ThemeScript />
       </head>
       <body className="flex min-h-dvh flex-col">
-        <Navbar />
-        <main id="main" tabIndex={-1} className="flex-1 outline-none">
-          {children}
-        </main>
-        <Footer />
+        <MotionProvider>
+          <Navbar />
+          <main id="main" tabIndex={-1} className="flex-1 outline-none">
+            {children}
+          </main>
+          <Footer />
+          <StairTransition />
+          <ChatLauncher />
+        </MotionProvider>
       </body>
     </html>
   );

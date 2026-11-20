@@ -1,0 +1,27 @@
+{
+  "greeting": "Hi, I am the assistant on this portfolio. I answer from the verified details published on this site, with no external AI service. Ask about projects, skills, experience or how to get in touch.",
+  "fallback": "I could not find that in the details published on this site. Try one of the suggested questions, or send Gautham a message through the contact form.",
+  "thanks": "You are welcome. Ask anything else about the work on this site.",
+  "suggested": [
+    "What does Gautham do?",
+    "Which projects has he built?",
+    "What are his skills?",
+    "Where does he work?",
+    "How can I contact him?"
+  ],
+  "intents": {
+    "about": ["who", "about", "gautham", "introduce", "summary", "profile", "tell", "does", "kini"],
+    "role": ["work", "works", "working", "job", "role", "company", "employer", "currently", "current", "position", "ultraviolet", "consultant"],
+    "experience": ["experience", "career", "history", "internship", "intern", "background"],
+    "education": ["education", "study", "studied", "degree", "college", "university", "school", "graduate", "grade", "qualification"],
+    "skills": ["skills", "skill", "tools", "technologies", "technology", "stack", "know", "expertise", "good", "languages", "proficient"],
+    "certifications": ["certification", "certifications", "certificate", "certificates", "certified", "course", "courses", "nptel"],
+    "projects": ["projects", "project", "built", "build", "portfolio", "labs", "platform", "platforms", "made", "created"],
+    "achievements": ["achievement", "achievements", "award", "awards", "hackathon", "bug", "bounty", "conference", "conferences", "won", "place"],
+    "contact": ["contact", "email", "mail", "reach", "hire", "hiring", "message", "touch", "talk", "connect", "opportunity"],
+    "resume": ["cv", "resume", "download", "pdf"],
+    "social": ["github", "linkedin", "social", "profile", "profiles", "links"],
+    "location": ["where", "location", "located", "based", "live", "city", "country", "india", "karnataka"],
+    "languages": ["language", "speak", "spoken", "kannada", "malayalam", "tulu", "hindi", "konkani", "english"]
+  }
+}

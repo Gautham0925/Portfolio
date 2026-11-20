@@ -1,5 +1,23 @@
 # Changelog
 
+## [Unreleased] — 3D and motion upgrade
+
+### Added
+- 3D hero (React Three Fiber): shield, connected network, particles, parallax, with SVG fallback.
+- Motion system in `lib/motion.ts`; restored stair transition, page fade, counters and project slider on Framer Motion.
+- Tilt project cards, expandable quick look, interactive architecture diagram, toolbox field, experience timeline, closing contact section.
+- Magnetic buttons, shared-layout nav indicator, theme cross-fade, copy-email.
+- Ask Gautham chatbot built on the site's verified content (`content/chatbot.json`); no external AI.
+- Contact API route (`/api/contact`) sending through Zoho SMTP with auto-reply, honeypot, rate limits and origin check.
+- `ANIMATION_INVENTORY.md`, `docs/PHASE_REPORTS.md`, `.env.example`.
+
+### Changed
+- Contact email shown on the site is `gautham@secworks.dpdns.org`.
+- Security headers added (nosniff, frame deny, referrer policy, permissions policy).
+
+### Removed
+- Google Apps Script endpoint from the contact form (script kept under `integrations/` for reference).
+
 ## [Unreleased] — Content refresh from 2026 CV
 
 ### Changed

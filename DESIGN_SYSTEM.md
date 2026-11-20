@@ -9,7 +9,7 @@ Technical editorial: graphite surfaces, white type, a single restrained lime acc
 | Bento cards with consistent radius and borders | Neon glows, matrix rain, fake terminals |
 | One accent, used for actions and labels | Gradients on text or backgrounds |
 | Mono type for metadata (eyebrows, dates, tags) | Skill percentage bars |
-| Subtle entry motion (`animate-rise`, 0.5 s) | Full-screen page transitions, delayed content |
+| Subtle entry motion, central config in `lib/motion.ts` | Content hidden behind long intros |
 
 ## Tokens
 
@@ -82,3 +82,7 @@ Breakpoints: Tailwind defaults (`sm` 640, `md` 768, `lg` 1024). Navigation colla
 - Icon-only controls have `aria-label`; decorative icons are `aria-hidden`.
 - Form fields use visible `<label>` elements.
 - `prefers-reduced-motion` disables animations and transitions.
+
+## Motion
+
+All timing lives in `lib/motion.ts`. Page changes use a 6-step stair wipe (0.32 s steps) and a 0.35 s fade. Scroll reveals use `Reveal`, `RevealGroup`, `RevealItem`. 3D tilt, magnetic and cursor effects run only on fine pointers and never under reduced motion. The 3D hero is lazy loaded, pauses offscreen and falls back to a static SVG. See `ANIMATION_INVENTORY.md`.

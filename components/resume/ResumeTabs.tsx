@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 
 import { Badge } from "@/components/ui/Badge";
@@ -19,10 +20,18 @@ type ResumeTabsProps = {
 type TimelineItem = { title: string; subtitle: string; period: string; meta?: string; points?: string[] };
 
 function Timeline({ items }: { items: TimelineItem[] }) {
+  const reduce = useReducedMotion();
   return (
     <ol className="relative flex flex-col gap-4 border-l border-border pl-6">
       {items.map((item) => (
-        <li key={`${item.title}-${item.period}`} className="relative">
+        <motion.li
+          key={`${item.title}-${item.period}`}
+          className="relative"
+          initial={reduce ? false : { opacity: 0, x: -14 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, ease: [0.2, 0.7, 0.2, 1] }}
+        >
           <span aria-hidden="true" className="absolute -left-[29px] top-7 size-2.5 rounded-full bg-accent ring-4 ring-bg" />
           <Card className="flex flex-col gap-4">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
@@ -46,7 +55,7 @@ function Timeline({ items }: { items: TimelineItem[] }) {
               </ul>
             )}
           </Card>
-        </li>
+        </motion.li>
       ))}
     </ol>
   );

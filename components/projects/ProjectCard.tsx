@@ -4,6 +4,7 @@ import { FiArrowRight, FiGithub } from "react-icons/fi";
 
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
+import { ProjectPreview } from "./ProjectPreview";
 import { formatMonth, type Project } from "@/lib/content";
 
 type ProjectCardProps = {
@@ -47,6 +48,7 @@ export function ProjectCard({ project, headingLevel: Heading = "h3" }: ProjectCa
           </Link>
         </Heading>
         <p className="text-sm leading-relaxed text-muted">{project.summary}</p>
+        <ProjectPreview overview={project.caseStudy.overview} problem={project.caseStudy.problem} />
         <ul className="mt-auto flex flex-wrap gap-2" aria-label="Technology stack">
           {project.stack.slice(0, 5).map((tech) => (
             <li key={tech}>

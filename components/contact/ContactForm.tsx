@@ -6,9 +6,6 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 
-const SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbz9jMg3-sCsYEqvfyphaUdzQEEtZZaop1gN4Xt_0K73l9dUUchnIqxyKWCwpbWJW5fORQ/exec";
-
 type Status = { kind: "idle" } | { kind: "sending" } | { kind: "success" } | { kind: "error"; message: string };
 
 function Field({ id, label, children }: { id: string; label: string; children: ReactNode }) {
@@ -29,11 +26,16 @@ export function ContactForm() {
     e.preventDefault();
     const form = e.currentTarget;
     setStatus({ kind: "sending" });
+    const data = Object.fromEntries(new FormData(form).entries());
     try {
-      const response = await fetch(SCRIPT_URL, { method: "POST", body: new FormData(form) });
-      const result = await response.json().catch(() => null);
-      if (!response.ok || result?.result === "error") {
-        setStatus({ kind: "error", message: "Failed to send message. Please check your details or email directly." });
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const result = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
+      if (!response.ok || !result?.ok) {
+        setStatus({ kind: "error", message: result?.error ?? "Failed to send message. Please check your details or email directly." });
         return;
       }
       form.reset();
@@ -64,11 +66,18 @@ export function ContactForm() {
         <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
       <Field id="message" label="Message">
-        <Textarea id="message" name="Message" maxLength={2000} required />
+        <Textarea id="message" name="message" maxLength={2000} required />
       </Field>
       <div className="flex flex-wrap items-center gap-4">
         <Button type="submit" size="lg" disabled={status.kind === "sending"}>
-          {status.kind === "sending" ? "Sending…" : "Send message"}
+          {status.kind === "sending" ? (
+            <>
+              <span aria-hidden="true" className="size-4 animate-spin rounded-full border-2 border-accent-fg/30 border-t-accent-fg" />
+              Sending
+            </>
+          ) : (
+            "Send message"
+          )}
         </Button>
         <p
           id="form-status"

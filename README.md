@@ -11,6 +11,8 @@ Personal portfolio of Gautham P Kini, built with Next.js (App Router) and TypeSc
 | Framework | Next.js 16 (App Router, Turbopack) |
 | UI | React 19, Tailwind CSS 4, Radix UI primitives |
 | Language | TypeScript (strict) |
+| Motion and 3D | Framer Motion, React Three Fiber, three.js |
+| Mail | Nodemailer over Zoho SMTP |
 
 ## Getting started
 
@@ -22,6 +24,10 @@ npm run dev
 ```
 
 Open http://localhost:3000.
+
+## Environment
+
+Copy `.env.example` to `.env.local` and set `ZOHO_PASS` (a Zoho app password). Set the same variables on the host. Never commit real values.
 
 ## Scripts
 
@@ -38,7 +44,7 @@ Open http://localhost:3000.
 
 ```
 app/            Routes and self-hosted fonts
-components/     layout/, home/, projects/, resume/, contact/, ui/
+components/     layout/, home/, motion/, three/, chat/, projects/, resume/, contact/, ui/
 content/        Portfolio content as JSON
 hooks/          Client hooks (theme)
 lib/            Content loaders, site config, utilities

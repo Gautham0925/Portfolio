@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { FiArrowLeft, FiArrowUpRight, FiGithub } from "react-icons/fi";
 
+import { ArchitectureDiagram } from "@/components/projects/ArchitectureDiagram";
 import { PageContainer } from "@/components/layout/PageContainer";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -99,16 +100,10 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
         </Section>
 
         <Section id="architecture" title="Architecture">
-          <dl className="flex flex-col gap-3 sm:hidden">
-            {caseStudy.architecture.map((row) => (
-              <Card key={row.component} className="flex flex-col gap-1.5 p-4">
-                <dt className="font-medium">{row.component}</dt>
-                <dd className="font-mono text-xs text-accent-text">{row.technology}</dd>
-                <dd className="text-sm text-muted">{row.role}</dd>
-              </Card>
-            ))}
-          </dl>
-          <div className="hidden overflow-x-auto rounded-[var(--radius-card)] border border-border sm:block">
+          <ArchitectureDiagram items={caseStudy.architecture} />
+          <details className="group mt-6">
+            <summary className="w-fit cursor-pointer text-sm font-medium text-muted hover:text-fg">View as table</summary>
+          <div className="mt-4 overflow-x-auto rounded-[var(--radius-card)] border border-border">
             <table className="w-full text-left text-sm">
               <caption className="sr-only">System components</caption>
               <thead className="bg-surface-2 font-mono text-xs uppercase tracking-wider text-subtle">
@@ -129,6 +124,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
               </tbody>
             </table>
           </div>
+          </details>
         </Section>
 
         <Section id="stack" title="Stack">
