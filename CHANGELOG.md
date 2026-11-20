@@ -5,6 +5,15 @@
 ### Removed
 - All previous projects (Caesar Cipher, Password Strength Checker, Image Encryption, Keylogger, Packet Sniffer) and their screenshots, at owner's request.
 
+### Changed
+- Profile headline and summary updated to cybersecurity professional / VAPT; removed "Fresher" and "final-year student".
+- Added Ultraviolet Cyber India Pvt. Ltd. VAPT internship to experience.
+- Home stats now reflect project work (platforms, test cases, labs).
+
+### Security
+- Removed public phone number and full postal address; location shown as region only.
+- Contact form phone field is optional.
+
 ### Added
 - Project case studies for VulnCRM, VulnMart and the VulnMart CTF Platform, written only from each repository's own README and docs.
 - `/projects/[slug]` statically generated case-study pages: overview, problem, architecture, stack, security design, testing, challenges.

@@ -1,22 +1,35 @@
 {
   "name": "Gautham P Kini",
-  "headline": "Bachelor of Engineering Student",
-  "summary": "I'm a final-year B.E. student and a cybersecurity and networking enthusiast, passionate about building secure systems and exploring real-world network challenges.",
+  "headline": "Cybersecurity Professional · VAPT",
+  "summary": "Cybersecurity professional focused on vulnerability assessment and penetration testing of web applications, APIs and authentication systems. I build realistic security training platforms and CTF infrastructure to practise and teach offensive and defensive security.",
   "tagline": "Building safer systems through code and creativity.",
   "photo": "/assets/photo.png",
   "contact": {
     "email": "gautham07049@gmail.com",
-    "phone": "+91 6282259552",
-    "location": "Moodbidri, Dakshina Kannada 574227"
+    "location": "Karnataka, India"
   },
   "facts": [
-    { "label": "Experience", "value": "Fresher" },
-    { "label": "Nationality", "value": "Indian" },
-    { "label": "Languages", "value": "English, Konkani, Kannada, Hindi, Malayalam, Tulu" }
+    {
+      "label": "Nationality",
+      "value": "Indian"
+    },
+    {
+      "label": "Languages",
+      "value": "English, Konkani, Kannada, Hindi, Malayalam, Tulu"
+    }
   ],
   "stats": [
-    { "value": 3, "label": "Programming languages" },
-    { "value": 4, "label": "Security & networking tools" },
-    { "value": 3, "label": "Operating systems explored" }
+    {
+      "value": 3,
+      "label": "Security platforms built"
+    },
+    {
+      "value": 71,
+      "label": "Documented security test cases"
+    },
+    {
+      "value": 12,
+      "label": "Vulnerability labs designed"
+    }
   ]
 }

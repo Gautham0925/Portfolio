@@ -11,7 +11,7 @@ export type Profile = {
   summary: string;
   tagline: string;
   photo: string;
-  contact: { email: string; phone: string; location: string };
+  contact: { email: string; location: string };
   facts: { label: string; value: string }[];
   stats: { value: number; label: string }[];
 };

@@ -54,8 +54,8 @@ export function ContactForm() {
         <Field id="email" label="Email">
           <Input id="email" type="email" name="email" autoComplete="email" maxLength={254} required />
         </Field>
-        <Field id="phone" label="Phone">
-          <Input id="phone" type="tel" name="phone" autoComplete="tel" maxLength={20} required />
+        <Field id="phone" label="Phone (optional)">
+          <Input id="phone" type="tel" name="phone" autoComplete="tel" maxLength={20} />
         </Field>
       </div>
       <Field id="message" label="Message">

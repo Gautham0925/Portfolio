@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import { FiMail, FiMapPin } from "react-icons/fi";
 
 import { PageContainer } from "@/components/layout/PageContainer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -13,9 +13,8 @@ export const metadata: Metadata = {
   description: "Get in touch with Gautham P Kini.",
 };
 
-const details = [
+const details: { icon: typeof FiMail; label: string; value: string; href?: string }[] = [
   { icon: FiMail, label: "Email", value: profile.contact.email, href: `mailto:${profile.contact.email}` },
-  { icon: FiPhone, label: "Phone", value: profile.contact.phone, href: `tel:${profile.contact.phone.replace(/\s/g, "")}` },
   { icon: FiMapPin, label: "Location", value: profile.contact.location },
 ];
 
